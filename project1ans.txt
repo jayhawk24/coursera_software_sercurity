@@ -1,0 +1,19 @@
+On to the first exploit:
+
+What is the address of buf (the local variable in the main function)? Enter the answer in either hexadecimal format (a 0x followed by 8 "digits" 0-9 or a-f, like 0xbfff0014) or decimal format. Note here that we want the address of buf, not its contents.
+0x08048752
+What is the address of ptrs (the global variable) ? As with the previous question, use hex or decimal format.
+0x8048737
+What is the address of write_secret (the function) ? Use hex or decimal.
+0x8048534
+What is the address of p (the local variable in the main function) ? Use hex, or decimal format.
+0x804878a
+What input do you provide to the program so that ptrs[s] reads (and then tries to execute) 
+the contents of local variable p instead of a function pointer stored in the buffer pointed
+to by ptrs? You can determine the answer by performing a little arithmetic on the addresses 
+you have already gathered above -- be careful that you take into account the size of a 
+pointer when doing pointer arithmetic. If successful, you will end up executing the 
+pat_on_back function. Enter your answer as an unsigned integer.
+
+What do you enter so that ptrs[s] reads (and then tries to execute) starting from the 65th byte in buf, i.e., the location at buf[64]? Enter your answer as an unsigned integer.
+What do you replace \xEE\xEE\xEE\xEE with in the following input to the program (which due to the overflow will be filling in the 65th-68th bytes of buf) so that the ptrs[s] operation executes the write_secret function, thus dumping the secret? (Hint: Be sure to take endianness into account.) 771675175\x00AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xEE\xEE\xEE\xEE
